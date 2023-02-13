@@ -1,0 +1,23 @@
+.task-container {
+  border: 1px solid lightgray;
+  background-color: rgb(246, 249, 251);
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  h4 {
+    font-size: 14px;
+    color: rgb(160, 30, 95);
+  }
+  p {
+    font-size: 12px;
+    color: gray;
+  }
+
+  span {
+    font-size: 13px;
+  }
+}

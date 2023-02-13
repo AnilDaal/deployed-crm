@@ -1,0 +1,44 @@
+.front-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: whitesmoke;
+  gap: 2rem;
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    // background-color: pink;
+    gap: 1rem;
+
+    h1 {
+      font-weight: bold;
+      span {
+        color: deeppink;
+      }
+    }
+
+    h4 {
+      font-size: 18px;
+      color: gray;
+    }
+    button {
+      color: teal;
+      background-color: none;
+      border: 1px solid teal;
+      border-radius: 4px;
+      padding: 5px 7px;
+      font-weight: bold;
+      margin-right: 1rem;
+      font-size: 1.1rem;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        background-color: teal;
+        color: white;
+      }
+    }
+  }
+}
