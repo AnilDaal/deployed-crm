@@ -11,48 +11,51 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 const List = () => {
-  const { token } = useSelector(state => state.auth)
+  const { token } = useSelector((state) => state.auth);
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    role: '',
-    country: ''
-  })
-  const [employeeData, setEmployeeData] = useState([])
-
+    name: "",
+    email: "",
+    role: "",
+    country: "",
+  });
+  const [employeeData, setEmployeeData] = useState([]);
 
   const fetchData = useCallback(async () => {
-
     try {
-      const { data } = await axios.get('http://api.furniturelelo.com/api/employee', {
-        headers: {
-          Authorization: `Bearer ${token}`
+      const { data } = await axios.get(
+        "http://api.pacifencesolutions.com/api/employee",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
+      );
 
       if (data) {
-        setEmployeeData(data)
+        setEmployeeData(data);
       }
-      console.log('Data is :', data)
+      console.log("Data is :", data);
     } catch (err) {
-      console.log('error is in the house ', err)
+      console.log("error is in the house ", err);
     }
-
-
-  }, [token])
+  }, [token]);
 
   useEffect(() => {
-    fetchData()
-  }, [fetchData])
+    fetchData();
+  }, [fetchData]);
 
   const handleDelete = async (id) => {
-    axios.delete(`http://api.furniturelelo.com/api/employee/${id.toString()}`, {
-      headers: {
-        Authorization: "Bearer " + token
-      }
-    })
+    axios
+      .delete(
+        `http://api.pacifencesolutions.com/api/employee/${id.toString()}`,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
       .then((res) => fetchData())
-      .catch(err => alert(err.message))
+      .catch((err) => alert(err.message));
 
     // await axios.delete(`http://localhost:5000/employee/${id}`)
 
@@ -71,32 +74,43 @@ const List = () => {
     // } catch (err) {
     //   console.log(err)
     // }
-  }
+  };
   const handleChange = (e) => {
-    setUser(prevState => ({ ...prevState, [e.target.name]: e.target.value }))
-    console.log(employeeData)
-    console.log(user)
-
-
-  }
-  const filteredData = employeeData.filter(emp => emp.name?.toLowerCase().includes(user.name?.toLowerCase()))
-
-
+    setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+    console.log(employeeData);
+    console.log(user);
+  };
+  const filteredData = employeeData.filter((emp) =>
+    emp.name?.toLowerCase().includes(user.name?.toLowerCase())
+  );
 
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-
         <TableHead>
           <TableRow>
             <TableCell className="tableCell x">
-              <label htmlFor='filter' style={{ color: 'gray', fontWeight: 'bold', fontSize: '14px', cursor: 'pointer' }}>Filter via name</label>
-              <input id='filter' type="text" onChange={handleChange} name='name' value={user.name} />
+              <label
+                htmlFor="filter"
+                style={{
+                  color: "gray",
+                  fontWeight: "bold",
+                  fontSize: "14px",
+                  cursor: "pointer",
+                }}
+              >
+                Filter via name
+              </label>
+              <input
+                id="filter"
+                type="text"
+                onChange={handleChange}
+                name="name"
+                value={user.name}
+              />
             </TableCell>
-
           </TableRow>
         </TableHead>
-
 
         <TableHead>
           <TableRow>
@@ -111,7 +125,6 @@ const List = () => {
         </TableHead>
         <TableBody>
           {filteredData.map((row) => {
-
             return (
               <TableRow key={row._id}>
                 {/* <TableCell className="tableCell">{row._id}</TableCell> */}
@@ -124,14 +137,20 @@ const List = () => {
                 <TableCell className="tableCell">{row.email}</TableCell>
                 <TableCell className="tableCell">{row.role}</TableCell>
 
-
                 <TableCell className="tableCell">{row.country}</TableCell>
                 <TableCell className="tableCell">
-                  <Link to={`/employees/${row._id}`}><button className="view">View</button></Link>
-                  <button onClick={() => handleDelete(row._id)} className='delete'>Delete</button>
+                  <Link to={`/employees/${row._id}`}>
+                    <button className="view">View</button>
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(row._id)}
+                    className="delete"
+                  >
+                    Delete
+                  </button>
                 </TableCell>
               </TableRow>
-            )
+            );
           })}
         </TableBody>
       </Table>

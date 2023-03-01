@@ -1,12 +1,12 @@
-import './edit.scss';
-import Sidebar from '../../components/sidebar/Sidebar';
-import Navbar from '../../components/navbar/Navbar';
+import "./edit.scss";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
 // import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { useCallback } from 'react';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useCallback } from "react";
 
 const New = () => {
   const { token } = useSelector((state) => state.auth);
@@ -14,18 +14,18 @@ const New = () => {
   const { employeeId } = useParams();
   console.log(employeeId);
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    role: '',
-    phone: '',
-    country: '',
-    address: '',
-    password: '',
+    name: "",
+    email: "",
+    role: "",
+    phone: "",
+    country: "",
+    address: "",
+    password: "",
   });
 
   const loadUserData = useCallback(() => {
     axios
-      .get(`http://api.furniturelelo.com/api/employee/${employeeId}`, {
+      .get(`http://api.pacifencesolutions.com/api/employee/${employeeId}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -46,7 +46,7 @@ const New = () => {
     // console.log(user);
     axios
       .put(
-        `http://api.furniturelelo.com/api/employee/${employeeId}`,
+        `http://api.pacifencesolutions.com/api/employee/${employeeId}`,
         { ...user },
         {
           headers: {
@@ -61,31 +61,31 @@ const New = () => {
 
   const countryOptions = [
     {
-      label: 'India',
-      value: 'India',
+      label: "India",
+      value: "India",
     },
     {
-      label: 'USA',
-      value: 'USA',
+      label: "USA",
+      value: "USA",
     },
     {
-      label: 'UK',
-      value: 'UK',
+      label: "UK",
+      value: "UK",
     },
     {
-      label: 'Dubai',
-      value: 'Dubai',
+      label: "Dubai",
+      value: "Dubai",
     },
     {
-      label: 'Germany',
-      value: 'Germany',
+      label: "Germany",
+      value: "Germany",
     },
   ];
 
   const roleOptions = [
-    { value: 'Sales' },
-    { value: 'Operation' },
-    { value: 'Account' },
+    { value: "Sales" },
+    { value: "Operation" },
+    { value: "Account" },
   ];
 
   const handleChange = (e) => {

@@ -1,54 +1,54 @@
-import './new.scss';
-import Sidebar from '../../components/sidebar/Sidebar';
-import Navbar from '../../components/navbar/Navbar';
+import "./new.scss";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
 // import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
-import { useState } from 'react';
+import { useState } from "react";
 
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const New = () => {
   const { token } = useSelector((state) => state.auth);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    password: '',
-    role: 'Sales',
-    phone: '',
-    country: 'India',
-    address: '',
+    name: "",
+    email: "",
+    password: "",
+    role: "Sales",
+    phone: "",
+    country: "India",
+    address: "",
   });
 
   const countryOptions = [
     {
-      label: 'India',
-      value: 'India',
+      label: "India",
+      value: "India",
     },
     {
-      label: 'USA',
-      value: 'USA',
+      label: "USA",
+      value: "USA",
     },
     {
-      label: 'UK',
-      value: 'UK',
+      label: "UK",
+      value: "UK",
     },
     {
-      label: 'Dubai',
-      value: 'Dubai',
+      label: "Dubai",
+      value: "Dubai",
     },
     {
-      label: 'Germany',
-      value: 'Germany',
+      label: "Germany",
+      value: "Germany",
     },
   ];
 
   const roleOptions = [
-    { value: 'Sales' },
-    { value: 'Operation' },
-    { value: 'Account' },
+    { value: "Sales" },
+    { value: "Operation" },
+    { value: "Account" },
   ];
 
   const handleChange = (e) => {
@@ -59,7 +59,7 @@ const New = () => {
     console.log(user);
     axios
       .post(
-        'http://api.furniturelelo.com/api/employee',
+        "http://api.pacifencesolutions.com/api/employee",
         { ...user },
         {
           headers: {
@@ -67,7 +67,7 @@ const New = () => {
           },
         }
       )
-      .then((res) => navigate('/employees'))
+      .then((res) => navigate("/employees"))
       .catch((err) => {
         console.log(err.response.data.message);
 

@@ -1,31 +1,31 @@
-import Sidebar from '../../components/sidebar/Sidebar';
-import Navbar from '../../components/navbar/Navbar';
-import Chart from '../../extra/chart/Chart';
-import { Link, useParams } from 'react-router-dom';
-import './single.scss';
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
+import Chart from "../../extra/chart/Chart";
+import { Link, useParams } from "react-router-dom";
+import "./single.scss";
 
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-import Task from '../../components/task-management/Task';
+import Task from "../../components/task-management/Task";
 
 const taskObj = {
-  title: 'CRM Project',
-  description: 'design a build a crm system...',
-  assignedDate: '16/01/2023',
-  deadline: '12/02/2023',
+  title: "CRM Project",
+  description: "design a build a crm system...",
+  assignedDate: "16/01/2023",
+  deadline: "12/02/2023",
 };
 const taskObj1 = {
-  title: 'SEO',
-  description: 'design a build a search engine optimized website...',
-  assignedDate: '16/01/2023',
-  deadline: '12/02/2023',
+  title: "SEO",
+  description: "design a build a search engine optimized website...",
+  assignedDate: "16/01/2023",
+  deadline: "12/02/2023",
 };
 const taskObj2 = {
-  title: 'Furniture',
-  description: 'design a build a furniture website...',
-  assignedDate: '16/01/2023',
-  deadline: '12/02/2023',
+  title: "Furniture",
+  description: "design a build a furniture website...",
+  assignedDate: "16/01/2023",
+  deadline: "12/02/2023",
 };
 
 const Single = () => {
@@ -35,16 +35,12 @@ const Single = () => {
   useEffect(() => {
     const fetchSingleCustomer = async () => {
       const { data } = await axios.get(
-        `http://api.furniturelelo.com/api/customer/${customerId}`
+        `http://api.pacifencesolutions.com/api/customer/${customerId}`
       );
       setSingleCustomer(data);
     };
     fetchSingleCustomer();
   }, [customerId]);
-
-
-
-
 
   return (
     <div className="single">
@@ -90,7 +86,6 @@ const Single = () => {
           </div>
           <div className="right">
             <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
-
           </div>
         </div>
         {/* <div className="bottom">
