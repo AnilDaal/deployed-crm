@@ -1,67 +1,60 @@
 // import './new.scss';
-import Sidebar from '../../components/sidebar/Sidebar';
-import Navbar from '../../components/navbar/Navbar';
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
 // import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
-import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const EditCustomer = () => {
-  const { customerId } = useParams()
-  const { token } = useSelector(state => state.auth)
+  const { customerId } = useParams();
+  const { token } = useSelector((state) => state.auth);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: '',
-    email: '',
+    name: "",
+    email: "",
 
-    status: 'Pending',
-    phone: '',
-    country: 'India',
-    address: '',
+    status: "Pending",
+    phone: "",
+    country: "India",
+    address: "",
   });
 
   const countryOptions = [
-
     {
-      label: 'India',
-      value: 'India',
+      label: "India",
+      value: "India",
     },
     {
-      label: 'USA',
-      value: 'USA',
+      label: "USA",
+      value: "USA",
     },
     {
-      label: 'UK',
-      value: 'UK',
+      label: "UK",
+      value: "UK",
     },
     {
-      label: 'Dubai',
-      value: 'Dubai',
+      label: "Dubai",
+      value: "Dubai",
     },
     {
-      label: 'Germany',
-      value: 'Germany',
+      label: "Germany",
+      value: "Germany",
     },
   ];
 
   const roleOptions = [
-
-    { value: 'Pending' },
-    { value: 'Success' },
-    { value: 'Rejected' },
+    { value: "Pending" },
+    { value: "Success" },
+    { value: "Rejected" },
   ];
-
-
-
 
   const loadUserData = useCallback(() => {
     axios
-      .get(`http://api.furniturelelo.com/api/customer/${customerId}`, {
-
-      })
+      .get(`http://api.pacifencesolutions.com/api/customer/${customerId}`, {})
       .then(({ data }) => {
         console.log(data);
         setUser(data);
@@ -73,8 +66,6 @@ const EditCustomer = () => {
     loadUserData();
   }, [loadUserData]);
 
-
-
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
@@ -82,11 +73,15 @@ const EditCustomer = () => {
     e.preventDefault();
     console.log(user);
     axios
-      .put(`http://api.furniturelelo.com/api/customer/${customerId}`, { ...user }, {
-        headers: {
-          'authorization': `Bearer ${token}`
+      .put(
+        `http://api.pacifencesolutions.com/api/customer/${customerId}`,
+        { ...user },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         }
-      })
+      )
       .then((res) => navigate(`/customers/${customerId}`))
       .catch((err) => {
         console.log(err);
@@ -220,4 +215,4 @@ const EditCustomer = () => {
   );
 };
 
-export default EditCustomer
+export default EditCustomer;

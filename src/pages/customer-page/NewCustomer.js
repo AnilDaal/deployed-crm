@@ -1,56 +1,54 @@
 // import './new.scss';
-import Sidebar from '../../components/sidebar/Sidebar';
-import Navbar from '../../components/navbar/Navbar';
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
 // import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
-import { useState } from 'react';
+import { useState } from "react";
 
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 const New = () => {
-  const { token } = useSelector(state => state.auth)
+  const { token } = useSelector((state) => state.auth);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    name: '',
-    email: '',
+    name: "",
+    email: "",
 
-    status: 'Pending',
-    phone: '',
-    country: 'India',
-    address: '',
+    status: "Pending",
+    phone: "",
+    country: "India",
+    address: "",
   });
 
   const countryOptions = [
-
     {
-      label: 'India',
-      value: 'India',
+      label: "India",
+      value: "India",
     },
     {
-      label: 'USA',
-      value: 'USA',
+      label: "USA",
+      value: "USA",
     },
     {
-      label: 'UK',
-      value: 'UK',
+      label: "UK",
+      value: "UK",
     },
     {
-      label: 'Dubai',
-      value: 'Dubai',
+      label: "Dubai",
+      value: "Dubai",
     },
     {
-      label: 'Germany',
-      value: 'Germany',
+      label: "Germany",
+      value: "Germany",
     },
   ];
 
   const roleOptions = [
-
-    { value: 'Pending' },
-    { value: 'Success' },
-    { value: 'Rejected' },
+    { value: "Pending" },
+    { value: "Success" },
+    { value: "Rejected" },
   ];
 
   const handleChange = (e) => {
@@ -60,12 +58,16 @@ const New = () => {
     e.preventDefault();
     console.log(user);
     axios
-      .post('http://api.furniturelelo.com/api/customer', { ...user }, {
-        headers: {
-          'authorization': `Bearer ${token}`
+      .post(
+        "http://api.pacifencesolutions.com/api/customer",
+        { ...user },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
         }
-      })
-      .then((res) => navigate('/customers'))
+      )
+      .then((res) => navigate("/customers"))
       .catch((err) => {
         console.log(err);
         console.log(err.response.data.message.errors);
