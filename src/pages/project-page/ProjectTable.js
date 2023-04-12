@@ -6,8 +6,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState, useCallback } from "react";
+import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const categories = [

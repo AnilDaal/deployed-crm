@@ -7,26 +7,26 @@ import "./single.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import Task from "../../components/task-management/Task";
+// import Task from "../../components/task-management/Task";
 
-const taskObj = {
-  title: "CRM Project",
-  description: "design a build a crm system...",
-  assignedDate: "16/01/2023",
-  deadline: "12/02/2023",
-};
-const taskObj1 = {
-  title: "SEO",
-  description: "design a build a search engine optimized website...",
-  assignedDate: "16/01/2023",
-  deadline: "12/02/2023",
-};
-const taskObj2 = {
-  title: "Furniture",
-  description: "design a build a furniture website...",
-  assignedDate: "16/01/2023",
-  deadline: "12/02/2023",
-};
+// const taskObj = {
+//   title: "CRM Project",
+//   description: "design a build a crm system...",
+//   assignedDate: "16/01/2023",
+//   deadline: "12/02/2023",
+// };
+// const taskObj1 = {
+//   title: "SEO",
+//   description: "design a build a search engine optimized website...",
+//   assignedDate: "16/01/2023",
+//   deadline: "12/02/2023",
+// };
+// const taskObj2 = {
+//   title: "Furniture",
+//   description: "design a build a furniture website...",
+//   assignedDate: "16/01/2023",
+//   deadline: "12/02/2023",
+// };
 
 const Single = () => {
   const [singleCustomer, setSingleCustomer] = useState({});

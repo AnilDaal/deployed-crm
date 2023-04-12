@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const New = () => {
   const { token } = useSelector((state) => state.auth);

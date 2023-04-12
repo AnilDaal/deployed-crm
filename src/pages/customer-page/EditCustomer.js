@@ -6,7 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const EditCustomer = () => {
   const { customerId } = useParams();

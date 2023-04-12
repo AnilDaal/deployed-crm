@@ -22,13 +22,13 @@ function App() {
   console.log();
   // const isAdmin = false
   // const [localToken, setLocalToken] = useState(JSON.parse(localStorage.getItem('adminToken')))
-  const [role, setRole] = useState(null);
+  // const [role, setRole] = useState(null);
 
   useEffect(() => {
     if (token) {
       try {
         const tokenData = jwtDecode(token);
-        setRole(tokenData.role);
+        // setRole(tokenData.role);
       } catch (error) {
         console.log(error);
       }
