@@ -6,7 +6,6 @@ import "./single.scss";
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import List from "../../components/table/Table";
 import Task from "../../components/task-management/Task";
 import { useSelector } from "react-redux";
 
@@ -34,19 +33,18 @@ const Single = () => {
   const [singleEmployee, setSingleEmployee] = useState({});
   const [tasks, setTasks] = useState([]);
   const { employeeId } = useParams();
-  console.log(token);
   useEffect(() => {
     const fetchSingleEmployee = async () => {
       try {
         const { data } = await axios.get(
-          `http://api.pacifencesolutions.com/api/employee/${employeeId}`,
+          `https://api.pacifencesolutions.com/api/employee/${employeeId}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
             },
           }
         );
-        setSingleEmployee(data);
+        setSingleEmployee(data.data);
       } catch (err) {
         console.log(err);
       }
@@ -58,27 +56,23 @@ const Single = () => {
     const fetchTasks = async () => {
       try {
         const { data } = await axios.get(
-          `http://api.pacifencesolutions.com/api/employee/${employeeId}/getTask`,
+          `https://api.pacifencesolutions.com/api/employee/${employeeId}/getTask`,
           {
             headers: {
               authorization: `Bearer ${token}`,
             },
           }
         );
-        console.log(data);
-        const usersTasks = data.filter(
-          (t) => t.comming[0].employeeId === employeeId
-        );
+        const usersTasks = data.data.filter((t) => t.employeeId === employeeId);
         setTasks(usersTasks);
-        console.log(usersTasks);
       } catch (err) {
         console.log(err);
       }
     };
     fetchTasks();
-  }, [employeeId]);
+  }, [employeeId, token]);
 
-  // console.log(singleEmployee);
+  console.log(tasks);
   return (
     <div className="single">
       <Sidebar />
@@ -131,28 +125,20 @@ const Single = () => {
         <div className="bottom">
           <div className="task-div">
             <h1 className="title">Completed Task</h1>
-            <Task taskObj={taskObj} />
-            <Task taskObj={taskObj2} />
-
-            {/* <List /> */}
           </div>
 
           <div className="task-div">
             <h1 className="title">Running</h1>
-            <Task taskObj={taskObj1} />
-            {/* <List /> */}
           </div>
 
           <div className="task-div">
             <h1 className="title">Comming Soon</h1>
             <div>
               {tasks.map((t) => {
-                const [taskObj] = t.comming;
+                const [taskObj] = t.task;
                 return <Task taskObj={taskObj} key={Task.title} />;
               })}
             </div>
-            {/* <Task taskObj={taskObj2} />
-            <List /> */}
           </div>
         </div>
       </div>

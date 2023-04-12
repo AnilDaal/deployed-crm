@@ -32,7 +32,7 @@ const ProjectTable = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       const { data } = await axios.get(
-        "http://api.pacifencesolutions.com/api/employee/1/getTask",
+        "https://api.pacifencesolutions.com/api/employee/1/getTask",
         {
           headers: {
             authorization: `Bearer ${token}`,

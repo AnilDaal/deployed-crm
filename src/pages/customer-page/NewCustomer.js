@@ -59,7 +59,7 @@ const New = () => {
     console.log(user);
     axios
       .post(
-        "http://api.pacifencesolutions.com/api/customer",
+        "https://api.pacifencesolutions.com/api/customer",
         { ...user },
         {
           headers: {

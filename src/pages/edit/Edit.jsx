@@ -25,7 +25,7 @@ const New = () => {
 
   const loadUserData = useCallback(() => {
     axios
-      .get(`http://api.pacifencesolutions.com/api/employee/${employeeId}`, {
+      .get(`https://api.pacifencesolutions.com/api/employee/${employeeId}`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
@@ -45,8 +45,8 @@ const New = () => {
     e.preventDefault();
     // console.log(user);
     axios
-      .put(
-        `http://api.pacifencesolutions.com/api/employee/${employeeId}`,
+      .patch(
+        `https://api.pacifencesolutions.com/api/employee/${employeeId}`,
         { ...user },
         {
           headers: {
@@ -115,7 +115,7 @@ const New = () => {
           <div className="right">
             <form onSubmit={handleSubmit}>
               <div className="formInput">
-                <label>Name and surname</label>
+                <label>Full Name</label>
                 <input
                   type="text"
                   placeholder="john doe"

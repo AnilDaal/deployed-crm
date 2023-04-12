@@ -35,7 +35,7 @@ const Single = () => {
   useEffect(() => {
     const fetchSingleCustomer = async () => {
       const { data } = await axios.get(
-        `http://api.pacifencesolutions.com/api/customer/${customerId}`
+        `https://api.pacifencesolutions.com/api/customer/${customerId}`
       );
       setSingleCustomer(data);
     };

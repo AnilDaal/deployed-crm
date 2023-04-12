@@ -38,7 +38,7 @@ const Single = () => {
     const fetchSingleEmployee = async () => {
       try {
         const { data } = await axios.get(
-          `http://api.pacifencesolutions.com/api/${employeeId}`,
+          `https://api.pacifencesolutions.com/api/${employeeId}`,
           {
             headers: {
               authorization: `Bearer ${token}`,
@@ -91,7 +91,7 @@ const Single = () => {
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">Role:</span>
-                  <span className="itemValue">{singleEmployee.role}</span>
+                  <span className="itemValue">{singleEmployee.roles}</span>
                 </div>
               </div>
             </div>

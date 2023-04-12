@@ -6,7 +6,7 @@ const authLogin = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://api.pacifencesolutions.com/api/employee/login",
+        "https://api.pacifencesolutions.com/api/employee/login",
         {
           email: userData.email,
           password: userData.password,
@@ -25,13 +25,14 @@ const authSignup = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://api.pacifencesolutions.com/api/employee/signup",
+        "https://api.pacifencesolutions.com/api/employee/signup",
         {
           email: userData,
           password: userData.password,
         }
       );
       console.log(data);
+      localStorage.setItem("adminToken", data.role);
       return data;
     } catch (err) {
       return rejectWithValue(err.response.data.message);
@@ -44,7 +45,7 @@ const adminLogin = createAsyncThunk(
   async (userData, { rejectWithValue }) => {
     try {
       const { data } = await axios.post(
-        "http://api.pacifencesolutions.com/api/admin/login",
+        "https://api.pacifencesolutions.com/api/admin/login",
         {
           email: userData.email,
           password: userData.password,
@@ -52,8 +53,7 @@ const adminLogin = createAsyncThunk(
       );
 
       console.log(data);
-      localStorage.setItem("adminToken", data);
-      localStorage.setItem("isAdmin", true);
+      localStorage.setItem("adminToken", data.token);
 
       return data;
     } catch (err) {

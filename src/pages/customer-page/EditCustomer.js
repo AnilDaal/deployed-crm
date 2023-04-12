@@ -54,7 +54,7 @@ const EditCustomer = () => {
 
   const loadUserData = useCallback(() => {
     axios
-      .get(`http://api.pacifencesolutions.com/api/customer/${customerId}`, {})
+      .get(`https://api.pacifencesolutions.com/api/customer/${customerId}`, {})
       .then(({ data }) => {
         console.log(data);
         setUser(data);
@@ -73,8 +73,8 @@ const EditCustomer = () => {
     e.preventDefault();
     console.log(user);
     axios
-      .put(
-        `http://api.pacifencesolutions.com/api/customer/${customerId}`,
+      .patch(
+        `https://api.pacifencesolutions.com/api/customer/${customerId}`,
         { ...user },
         {
           headers: {

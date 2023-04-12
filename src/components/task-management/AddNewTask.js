@@ -19,17 +19,16 @@ const New = () => {
     deadline: "",
   });
   const { employeeId } = useParams();
-
+  console.log({ task: [{ ...user }], employeeId });
   const handleChange = (e) => {
     setUser((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     axios
       .post(
-        `http://api.pacifencesolutions.com/api/employee/${employeeId}/addTask`,
-        { ...user, assigndate: user.assignedDate },
+        `https://api.pacifencesolutions.com/api/employee/${employeeId}/addTask`,
+        { ...user },
         {
           headers: {
             authorization: `Bearer ${token}`,

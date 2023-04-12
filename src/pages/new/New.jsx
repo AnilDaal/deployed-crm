@@ -20,6 +20,7 @@ const New = () => {
     phone: "",
     country: "India",
     address: "",
+    confirmPassword: "",
   });
 
   const countryOptions = [
@@ -56,10 +57,9 @@ const New = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     axios
       .post(
-        "http://api.pacifencesolutions.com/api/employee",
+        "https://api.pacifencesolutions.com/api/employee/",
         { ...user },
         {
           headers: {
@@ -70,7 +70,6 @@ const New = () => {
       .then((res) => navigate("/employees"))
       .catch((err) => {
         console.log(err.response.data.message);
-
         setError(err.response.data.message);
       });
   };
@@ -87,7 +86,7 @@ const New = () => {
           <div className="right">
             <form onSubmit={handleSubmit}>
               <div className="formInput">
-                <label>Name and surname</label>
+                <label>Full Name</label>
                 <input
                   type="text"
                   placeholder="john doe"
@@ -116,6 +115,16 @@ const New = () => {
                   name="password"
                   onChange={handleChange}
                   value={user.password}
+                />
+              </div>
+              <div className="formInput">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  placeholder="confirm password"
+                  name="confirmPassword"
+                  onChange={handleChange}
+                  value={user.confirmPassword}
                 />
               </div>
               <div className="formInput">
@@ -173,7 +182,7 @@ const New = () => {
                 <label htmlFor="role">Role</label>
                 <select
                   id="role"
-                  value={user.role}
+                  value={user.roles}
                   onChange={handleChange}
                   name="role"
                   required

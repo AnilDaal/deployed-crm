@@ -19,20 +19,21 @@ const List = () => {
     country: "",
   });
   const [employeeData, setEmployeeData] = useState([]);
-
+  console.log("heo");
+  console.log(token);
+  console.log("helo");
   const fetchData = useCallback(async () => {
     try {
       const { data } = await axios.get(
-        "http://api.pacifencesolutions.com/api/employee",
+        "https://api.pacifencesolutions.com/api/employee",
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-
       if (data) {
-        setEmployeeData(data);
+        setEmployeeData(data.data);
       }
       console.log("Data is :", data);
     } catch (err) {
@@ -47,7 +48,7 @@ const List = () => {
   const handleDelete = async (id) => {
     axios
       .delete(
-        `http://api.pacifencesolutions.com/api/employee/${id.toString()}`,
+        `https://api.pacifencesolutions.com/api/employee/${id.toString()}`,
         {
           headers: {
             Authorization: "Bearer " + token,

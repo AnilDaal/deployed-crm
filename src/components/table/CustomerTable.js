@@ -29,7 +29,7 @@ const CustomerTable = () => {
     // const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2NlMzc2NWI4OGVkODM1YmFhOTk1MjAiLCJpYXQiOjE2NzQ0NTg5ODEsImV4cCI6MTY3NDcxODE4MX0.F1RlkqHpxfbHhLIEM3MFuPWOqxJQTCXQFSHwfBHuD6g'
     try {
       const { data } = await axios.get(
-        "http://api.pacifencesolutions.com/api/customer",
+        "https://api.pacifencesolutions.com/api/customer",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ const CustomerTable = () => {
   const handleDelete = async (id) => {
     axios
       .delete(
-        `http://api.pacifencesolutions.com/api/customer/${id.toString()}`,
+        `https://api.pacifencesolutions.com/api/customer/${id.toString()}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
